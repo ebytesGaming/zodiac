@@ -41,7 +41,7 @@ class Client(commands.Bot):
         while not self.is_closed():
             await self.change_presence(
                 activity=discord.Game(name="on ZodiacSMP"),
-                status=discord.Status.invisible
+                status=discord.Status.dnd
             )
             await asyncio.sleep(59)
             await self.change_presence(
