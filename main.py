@@ -5,6 +5,16 @@ import asyncio
 import io
 from collections import Counter
 import os
+# --- dotenv for loading environment variables ---
+from dotenv import load_dotenv
+
+load_dotenv()  # This loads environment variables from .env file
+
+# Get the token from environment variable
+TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+
+if TOKEN is None:
+    raise ValueError("No token found. Please make sure the DISCORD_BOT_TOKEN environment variable is set.")
 
 class Client(commands.Bot):
     async def on_ready(self ):
@@ -222,7 +232,6 @@ async def close_ticket(interaction: discord.Interaction):
 
 async def main():
     async with client:
-        TOKEN = os.getenv("MTMzNDYxMDg3MjgzNTc3MjU2Nw.GPzdfk.QDgCo5m0u3fhNaMdg71gDzGDsihqtbyrgFwr0E")
         await client.start(TOKEN)
 
 asyncio.run(main())
