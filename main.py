@@ -4,6 +4,7 @@ from discord import app_commands
 import asyncio
 import io
 from collections import Counter
+import os
 
 class Client(commands.Bot):
     async def on_ready(self ):
@@ -221,6 +222,7 @@ async def close_ticket(interaction: discord.Interaction):
 
 async def main():
     async with client:
-        await client.start('MTMzNDYxMDg3MjgzNTc3MjU2Nw.G-JlNq.DFMDXbpStWTnWOd2MX_IOEWD2cigmxXw4RIDvA')
+        TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+        await client.start(TOKEN)
 
 asyncio.run(main())
