@@ -222,7 +222,7 @@ async def close_ticket(interaction: discord.Interaction):
 
 async def main():
     async with client:
-        TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+        TOKEN = os.getenv("MTMzNDYxMDg3MjgzNTc3MjU2Nw.GPzdfk.QDgCo5m0u3fhNaMdg71gDzGDsihqtbyrgFwr0E")
         await client.start(TOKEN)
 
 asyncio.run(main())
