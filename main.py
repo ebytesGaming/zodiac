@@ -6,6 +6,7 @@ import io
 from collections import Counter
 import os
 # --- dotenv for loading environment variables ---
+from dotenv import load_dotenv
 
 
 class Client(commands.Bot):
@@ -223,7 +224,11 @@ async def close_ticket(interaction: discord.Interaction):
     await interaction.channel.delete()
 
 async def main():
+    load_dotenv()
+    TOKEN = os.getenv("DISCORD_TOKEN")
+    if not TOKEN:
+        raise ValueError("DISCORD_TOKEN environment variable not set!")
     async with client:
-        await client.start('DISCORD_TOKEN')
+        await client.start(TOKEN)
 
 asyncio.run(main())
